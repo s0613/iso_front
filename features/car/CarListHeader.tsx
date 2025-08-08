@@ -1,3 +1,5 @@
+"use client";
+
 import { Bell, Search as SearchIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -10,6 +12,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import LocaleSwitcher from "@/components/LocaleSwitcher";
+import { useTranslations } from "next-intl";
 
 interface Vehicle {
   id: string;
@@ -35,11 +39,12 @@ export default function CarListHeader({
   setFilterCountry,
   vehicles,
 }: CarListHeaderProps) {
+  const t = useTranslations("CarListHeader");
   return (
     <header className="mb-8 flex flex-row items-center justify-between flex-wrap gap-6">
       {/* 좌측 타이틀 */}
       <div>
-        <h2 className="text-2xl font-semibold">인증서 발급 시스템</h2>
+        <h2 className="text-2xl font-semibold">{t("title")}</h2>
       </div>
 
       {/* 우측 검색·필터·알림·프로필 */}
@@ -49,7 +54,7 @@ export default function CarListHeader({
           <SearchIcon className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
           <Input
             className="w-64 pl-10"
-            placeholder="차대번호 또는 모델명 검색"
+            placeholder={t("searchPlaceholder")}
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
@@ -58,11 +63,11 @@ export default function CarListHeader({
         {/* 국가 필터 */}
         <Select onValueChange={(v) => setFilterCountry(v || null)}>
           <SelectTrigger className="w-40">
-            <SelectValue placeholder="국가 필터" />
+            <SelectValue placeholder={t("countryFilter")} />
           </SelectTrigger>
           <SelectContent>
             <SelectGroup>
-              <SelectLabel>수출 국가</SelectLabel>
+              <SelectLabel>{t("exportCountry")}</SelectLabel>
               {Array.from(new Set(vehicles.map((v) => v.country))).map((c) => (
                 <SelectItem key={c} value={c}>
                   {c}
@@ -76,6 +81,9 @@ export default function CarListHeader({
         <Button variant="ghost" size="icon">
           <Bell className="h-5 w-5" />
         </Button>
+
+        {/* 언어 전환 토글 */}
+        <LocaleSwitcher />
 
       </div>
     </header>
