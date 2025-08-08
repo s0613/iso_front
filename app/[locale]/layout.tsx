@@ -1,11 +1,14 @@
 import type {Metadata} from 'next';
 import {Geist, Geist_Mono} from 'next/font/google';
 import '../globals.css';
-import {NextIntlClientProvider, useTranslations} from 'next-intl';
+
+import {NextIntlClientProvider} from 'next-intl';
+
 import {notFound} from 'next/navigation';
 import LocaleSwitcher from '@/components/LocaleSwitcher';
 import {Toaster} from '@/components/ui/sonner';
 import Link from 'next/link';
+
 import type {Locale} from '@/i18n';
 
 const geistSans = Geist({
@@ -34,11 +37,14 @@ export function generateStaticParams() {
 
 export default async function LocaleLayout({
   children,
-  params: {locale}
+
+  params
 }: {
   children: React.ReactNode;
-  params: {locale: Locale};
+  params: Promise<{locale: Locale}>;
 }) {
+  const {locale} = await params;
+
   let messages;
   try {
     messages = (await import(`../../messages/${locale}.json`)).default;
@@ -61,9 +67,9 @@ export default async function LocaleLayout({
     </html>
   );
 }
+async function Nav({locale}: {locale: Locale}) {
+  const t = await getTranslations({locale, namespace: 'Nav'});
 
-function Nav({locale}: {locale: Locale}) {
-  const t = useTranslations('Nav');
   return (
     <nav className="flex gap-4">
       <Link href={`/${locale}`}>{t('home')}</Link>

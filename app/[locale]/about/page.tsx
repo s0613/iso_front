@@ -1,7 +1,13 @@
-import {useTranslations} from 'next-intl';
+import {getTranslations} from 'next-intl/server';
+import type {Locale} from '@/i18n';
 
-export default function AboutPage() {
-  const t = useTranslations('About');
+export default async function AboutPage({
+  params,
+}: {
+  params: Promise<{locale: Locale}>;
+}) {
+  const {locale} = await params;
+  const t = await getTranslations({locale, namespace: 'About'});
   return (
     <main className="p-4">
       <h1>{t('title')}</h1>
