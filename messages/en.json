@@ -1,0 +1,16 @@
+{
+  "Nav": {
+    "home": "Home",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "Index": {
+    "title": "This is the main page with i18n."
+  },
+  "About": {
+    "title": "This is the about page."
+  },
+  "Contact": {
+    "title": "This is the contact page."
+  }
+}
