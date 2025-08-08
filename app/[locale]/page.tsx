@@ -8,6 +8,7 @@ export default async function HomePage({
 }) {
   const {locale} = await params;
   const t = await getTranslations({locale, namespace: 'Index'});
+
   return (
     <main className="p-4">
       <h1>{t('title')}</h1>
