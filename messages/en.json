@@ -12,5 +12,11 @@
   },
   "Contact": {
     "title": "This is the contact page."
+  },
+  "CarListHeader": {
+    "title": "Certificate Issuance System",
+    "searchPlaceholder": "Search by VIN or model",
+    "countryFilter": "Country Filter",
+    "exportCountry": "Export Country"
   }
 }

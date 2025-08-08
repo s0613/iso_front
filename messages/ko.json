@@ -12,5 +12,11 @@
   },
   "Contact": {
     "title": "문의 페이지입니다."
+  },
+  "CarListHeader": {
+    "title": "인증서 발급 시스템",
+    "searchPlaceholder": "차대번호 또는 모델명 검색",
+    "countryFilter": "국가 필터",
+    "exportCountry": "수출 국가"
   }
 }
