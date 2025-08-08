@@ -1,0 +1,22 @@
+{
+  "Nav": {
+    "home": "홈",
+    "about": "소개",
+    "contact": "문의"
+  },
+  "Index": {
+    "title": "다국어 지원 메인 페이지입니다."
+  },
+  "About": {
+    "title": "소개 페이지입니다."
+  },
+  "Contact": {
+    "title": "문의 페이지입니다."
+  },
+  "CarListHeader": {
+    "title": "인증서 발급 시스템",
+    "searchPlaceholder": "차대번호 또는 모델명 검색",
+    "countryFilter": "국가 필터",
+    "exportCountry": "수출 국가"
+  }
+}
